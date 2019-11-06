@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="student">
+  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.16">
+    <root id="1">
+      <ServerVersion>3.25.1</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="main">
+      <Current>1</Current>
+    </schema>
+    <collation id="3" parent="1" name="BINARY"/>
+    <collation id="4" parent="1" name="NOCASE"/>
+    <collation id="5" parent="1" name="RTRIM"/>
+    <table id="6" parent="2" name="C"/>
+    <table id="7" parent="2" name="S"/>
+    <table id="8" parent="2" name="SC"/>
+    <table id="9" parent="2" name="chatNotes"/>
+    <table id="10" parent="2" name="employee"/>
+    <table id="11" parent="2" name="friends"/>
+    <table id="12" parent="2" name="friendsList"/>
+    <table id="13" parent="2" name="groupChatNotes"/>
+    <table id="14" parent="2" name="groupMember"/>
+    <table id="15" parent="2" name="groups"/>
+    <table id="16" parent="2" name="sqlite_master">
+      <System>1</System>
+    </table>
+    <table id="17" parent="2" name="sqlite_sequence">
+      <System>1</System>
+    </table>
+    <table id="18" parent="2" name="tbl_class"/>
+    <table id="19" parent="2" name="tbl_score"/>
+    <table id="20" parent="2" name="tbl_score_temp"/>
+    <table id="21" parent="2" name="tbl_student"/>
+    <table id="22" parent="2" name="tbl_subject"/>
+    <table id="23" parent="2" name="tbl_user"/>
+    <view id="24" parent="2" name="v_friends">
+      <SourceTextLength>486</SourceTextLength>
+    </view>
+    <view id="25" parent="2" name="view_stu">
+      <SourceTextLength>391</SourceTextLength>
+    </view>
+    <column id="26" parent="6" name="CNO">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="27" parent="6" name="CNAME">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="28" parent="6">
+      <ColNames>CNO</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="29" parent="7" name="SNO">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="30" parent="7" name="SNAME">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="31" parent="7" name="AGE">
+      <Position>3</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="7" name="SEX">
+      <Position>4</Position>
+      <DataType>char|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="33" parent="7" name="SDEPT">
+      <Position>5</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="34" parent="7">
+      <ColNames>SNO</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="35" parent="8" name="SNO">
+      <Position>1</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="36" parent="8" name="CNO">
+      <Position>2</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="37" parent="8" name="GREAD">
+      <Position>3</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="38" parent="9" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="39" parent="9" name="chatNotes_time">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="9" name="chatNotes_message">
+      <Position>3</Position>
+      <DataType>varchar(1024)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="41" parent="9" name="recUser_id">
+      <Position>4</Position>
+      <DataType>integer(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="9" name="sentUser_id">
+      <Position>5</Position>
+      <DataType>integer(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="43" parent="9">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <check id="44" parent="9">
+      <Predicate>id&lt;10000</Predicate>
+    </check>
+    <check id="45" parent="9">
+      <Predicate>recUser_id&gt;10000 and recUser_id&lt;100000000000</Predicate>
+    </check>
+    <check id="46" parent="9">
+      <Predicate>sentUser_id&gt;10000 and sentUser_id&lt;100000000000</Predicate>
+    </check>
+    <column id="47" parent="10" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="48" parent="10" name="name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="10" name="apart">
+      <Position>3</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="50" parent="10" name="boss_id">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="51" parent="10">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="52" parent="11" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="53" parent="11" name="friend_id">
+      <Position>2</Position>
+      <DataType>integer(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="54" parent="11" name="friendsList_id">
+      <Position>3</Position>
+      <DataType>integer(999)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="55" parent="11">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <check id="56" parent="11">
+      <Predicate>friend_id&gt;10000 and friend_id&lt;100000000000</Predicate>
+    </check>
+    <check id="57" parent="11">
+      <Predicate>friendsList_id&lt;999</Predicate>
+    </check>
+    <check id="58" parent="11">
+      <Predicate>id&lt;1000</Predicate>
+    </check>
+    <column id="59" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="60" parent="12" name="friendsList_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <column id="61" parent="12" name="user_id">
+      <Position>3</Position>
+      <DataType>integer(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="62" parent="12">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <check id="63" parent="12">
+      <Predicate>id&lt;1000</Predicate>
+    </check>
+    <check id="64" parent="12">
+      <Predicate>user_id&gt;1000 and user_id&lt;100000000000</Predicate>
+    </check>
+    <column id="65" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="66" parent="13" name="groupChatNotes_thime">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="67" parent="13" name="groupChatNotes_message">
+      <Position>3</Position>
+      <DataType>varchar(1024)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="68" parent="13" name="sentUser_id">
+      <Position>4</Position>
+      <DataType>integer(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="69" parent="13" name="group_id">
+      <Position>5</Position>
+      <DataType>integer(30)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="70" parent="13">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <check id="71" parent="13">
+      <Predicate>id&lt;10000</Predicate>
+    </check>
+    <check id="72" parent="13">
+      <Predicate>sentUser_id&gt;10000 and sentUser_id&lt;100000000000</Predicate>
+    </check>
+    <column id="73" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="74" parent="14" name="groupMember_id">
+      <Position>2</Position>
+      <DataType>integer(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="75" parent="14" name="group_id">
+      <Position>3</Position>
+      <DataType>integer(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="76" parent="14">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <check id="77" parent="14">
+      <Predicate>groupMember_id&lt;100000000000 and groupMember_id&gt;10000</Predicate>
+    </check>
+    <check id="78" parent="14">
+      <Predicate>id&lt;500</Predicate>
+    </check>
+    <column id="79" parent="15" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="80" parent="15" name="group_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="81" parent="15" name="user_id">
+      <Position>3</Position>
+      <DataType>integer(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="82" parent="15">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <check id="83" parent="15">
+      <Predicate>id&lt;100</Predicate>
+    </check>
+    <check id="84" parent="15">
+      <Predicate>user_id&gt;10000 and user_id&lt;100000000000</Predicate>
+    </check>
+    <column id="85" parent="16" name="type">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="86" parent="16" name="name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="87" parent="16" name="tbl_name">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="88" parent="16" name="rootpage">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="89" parent="16" name="sql">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="90" parent="17" name="name">
+      <Position>1</Position>
+    </column>
+    <column id="91" parent="17" name="seq">
+      <Position>2</Position>
+    </column>
+    <column id="92" parent="18" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="93" parent="18" name="class_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="94" parent="18">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="95" parent="19" name="sco_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="96" parent="19" name="sco_stuid">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="97" parent="19" name="sco_subid">
+      <Position>3</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="98" parent="19" name="sco_score">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="99" parent="19">
+      <ColNames>sco_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="100" parent="20" name="sco_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="101" parent="20" name="sco_stuid">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="102" parent="20" name="sco_subid">
+      <Position>3</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="103" parent="20" name="sco_score">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="104" parent="20" name="test">
+      <Position>5</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <key id="105" parent="20">
+      <ColNames>sco_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="106" parent="21" name="id">
+      <Position>1</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="107" parent="21" name="stu_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="108" parent="21" name="stu_classid">
+      <Position>3</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="109" parent="21" name="sqlite_autoindex_tbl_student_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="110" parent="21">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_tbl_student_1</UnderlyingIndexName>
+    </key>
+    <column id="111" parent="22" name="sub_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="112" parent="22" name="sub_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="113" parent="22">
+      <ColNames>sub_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="114" parent="23" name="user_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="115" parent="23" name="password">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="116" parent="23" name="user_name">
+      <Position>3</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="117" parent="23" name="user_sex">
+      <Position>4</Position>
+      <DataType>char(2)|0s</DataType>
+      <DefaultExpression>&apos;女&apos;</DefaultExpression>
+    </column>
+    <key id="118" parent="23">
+      <ColNames>user_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <check id="119" parent="23">
+      <Predicate>user_id&gt;10000 and user_id&lt;100000000000</Predicate>
+    </check>
+    <column id="120" parent="24" name="user_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="121" parent="24" name="password">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <column id="122" parent="24" name="user_name">
+      <Position>3</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <column id="123" parent="24" name="user_sex">
+      <Position>4</Position>
+      <DataType>char(2)|0s</DataType>
+    </column>
+    <column id="124" parent="24" name="friendsList_name">
+      <Position>5</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <column id="125" parent="24" name="friend_id">
+      <Position>6</Position>
+      <DataType>integer(11)|0s</DataType>
+    </column>
+    <column id="126" parent="24" name="friend_pwd">
+      <Position>7</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <column id="127" parent="24" name="friend_name">
+      <Position>8</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <column id="128" parent="24" name="friend_sex">
+      <Position>9</Position>
+      <DataType>char(2)|0s</DataType>
+    </column>
+    <column id="129" parent="25" name="id">
+      <Position>1</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <column id="130" parent="25" name="stu_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <column id="131" parent="25" name="sub_name">
+      <Position>3</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <column id="132" parent="25" name="sco_score">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="133" parent="25" name="class_name">
+      <Position>5</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+  </database-model>
+</dataSource>
