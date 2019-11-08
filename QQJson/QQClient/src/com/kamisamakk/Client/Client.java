@@ -24,7 +24,7 @@ public class Client {
     public Client()
     {
         try {
-            socket=new Socket("127.0.0.1",10086);
+            socket=new Socket("106.52.55.169",10086);
             writer=new PrintWriter(socket.getOutputStream());
             new Thread(new ClientHandler(socket)).start();
         } catch (IOException e) {

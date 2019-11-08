@@ -150,7 +150,7 @@ public class LoginFrame extends JFrame {
                 if(num==JFileChooser.APPROVE_OPTION){
                     System.out.println("选择了打开按钮");
                     File file=chooser.getSelectedFile();
-                    RequestSendFile requestSendFile=new RequestSendFile(txtUserField.getText(),list.getSelectedValue().toString(),file.getName(),file.length(),"127.0.0.1",10085);
+                    RequestSendFile requestSendFile=new RequestSendFile(txtUserField.getText(),list.getSelectedValue().toString(),file.getName(),file.length(),"106.52.55.169",10085);
                     String msg=JsonMessage.ObjToJson(requestSendFile);
                     Client.getClient().send(msg);
                     new Thread(new SendFile(file,10085)).start();
