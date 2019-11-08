@@ -1,17 +1,17 @@
 package com.kamisamakk.message;
 
-public class RequestSendMsg {
+public class RequestChatMsg {
     private String type;
-    private String userId;
+    private String sendId;
     private String friendId;
     private String chatMsg;
 
-    public RequestSendMsg() {
+    public RequestChatMsg() {
         this.type=JsonMessage.CHAT;
     }
 
-    public RequestSendMsg(String userId, String friendId, String chatMsg) {
-        this.userId = userId;
+    public RequestChatMsg(String sendId, String friendId, String chatMsg) {
+        this.sendId = sendId;
         this.friendId = friendId;
         this.chatMsg = chatMsg;
         this.type=JsonMessage.CHAT;
@@ -25,12 +25,12 @@ public class RequestSendMsg {
         this.type = type;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getSendId() {
+        return sendId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setSendId(String sendId) {
+        this.sendId = sendId;
     }
 
     public String getFriendId() {

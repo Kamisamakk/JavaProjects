@@ -5,6 +5,6 @@ import com.kamisamakk.ui.LoginFrame;
 
 public class StartClient {
     public static void main(String[] args) {
-        new LoginFrame();
+        LoginFrame.getLoginFrame();
     }
 }

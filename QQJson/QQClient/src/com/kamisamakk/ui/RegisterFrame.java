@@ -1,8 +1,16 @@
 package com.kamisamakk.ui;
 
+import com.kamisamakk.Client.Register;
+import com.kamisamakk.bean.User;
+import com.kamisamakk.message.JsonMessage;
+import com.kamisamakk.message.RequestRegister;
+
 import javax.swing.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 
 public class RegisterFrame extends JFrame {
     private JTextField txtPwd = new JTextField();
@@ -28,7 +36,7 @@ public class RegisterFrame extends JFrame {
         txtPwd.setBounds(10, 10, 100, 30);
         this.add(txtPwd);
 
-        txtName.setText("昵称");
+        txtName.setText("用户名");
         txtName.setBounds(10, 50, 100, 30);
         this.add(txtName);
 
@@ -48,10 +56,24 @@ public class RegisterFrame extends JFrame {
                 super.windowClosing(a);
                 int key = JOptionPane.showConfirmDialog(null, "是否要退出", "温馨提示", JOptionPane.OK_CANCEL_OPTION);
                 if (key == JOptionPane.OK_CANCEL_OPTION)
-
                     System.exit(0);
 
             }
         });
+
+        btnReg.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                // TODO Auto-generated method stub
+                super.mouseClicked(arg0);
+                //发送注册消息给服务器
+                User user=new User(null,txtPwd.getText(),txtName.getText(),txtSex.getText());
+                RequestRegister requestRegister=new RequestRegister(user);
+                String msg= JsonMessage.ObjToJson(requestRegister);
+                Register.getRegister().send(msg);
+            }
+        });
+
+
     }
 }

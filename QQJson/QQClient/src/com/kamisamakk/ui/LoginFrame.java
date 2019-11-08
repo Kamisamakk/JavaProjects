@@ -1,14 +1,18 @@
 package com.kamisamakk.ui;
 
 import com.kamisamakk.Client.Client;
+import com.kamisamakk.Client.SendFile;
 import com.kamisamakk.message.JsonMessage;
 import com.kamisamakk.message.RequestLogin;
+import com.kamisamakk.message.RequestChatMsg;
+import com.kamisamakk.message.RequestSendFile;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
 
 public class LoginFrame extends JFrame {
     //登陆控件
@@ -28,6 +32,14 @@ public class LoginFrame extends JFrame {
     JButton btnSendFile = new JButton();
     JProgressBar progressBar = new JProgressBar();
     JLabel labSendFile = new JLabel();
+    private static LoginFrame loginFrame;
+
+    public static LoginFrame getLoginFrame() {
+        if (loginFrame == null) {
+            loginFrame = new LoginFrame();
+        }
+        return loginFrame;
+    }
 
     public LoginFrame()
     {
@@ -115,6 +127,34 @@ public class LoginFrame extends JFrame {
                 RequestLogin requestLogin=new RequestLogin(txtUserField.getText(),txtPwdField.getText());
                 String msg= JsonMessage.ObjToJson(requestLogin);
                 Client.getClient().send(msg);
+            }
+        });
+
+        btnSend.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                RequestChatMsg requestSendMsg=new RequestChatMsg(txtUserField.getText(),list.getSelectedValue().toString(),txtSend.getText());
+                String chatMsg=JsonMessage.ObjToJson(requestSendMsg);
+                Client.getClient().send(chatMsg);
+            }
+        });
+
+        btnSendFile.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                JFileChooser chooser=new JFileChooser();
+                chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+                int num=chooser.showOpenDialog(null);
+                if(num==JFileChooser.APPROVE_OPTION){
+                    System.out.println("选择了打开按钮");
+                    File file=chooser.getSelectedFile();
+                    RequestSendFile requestSendFile=new RequestSendFile(txtUserField.getText(),list.getSelectedValue().toString(),file.getName(),file.length(),"127.0.0.1",10085);
+                    String msg=JsonMessage.ObjToJson(requestSendFile);
+                    Client.getClient().send(msg);
+                    new Thread(new SendFile(file,10085)).start();
+                }
             }
         });
     }
