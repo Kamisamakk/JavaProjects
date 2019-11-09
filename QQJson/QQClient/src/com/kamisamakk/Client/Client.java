@@ -43,7 +43,7 @@ public class Client {
         while (true)
         {
             try {
-                socket=new Socket("127.0.0.1",10086);
+                socket=new Socket("106.52.55.169",10086);
                 writer=new PrintWriter(socket.getOutputStream());
                 if(socket.isConnected())
                 {
