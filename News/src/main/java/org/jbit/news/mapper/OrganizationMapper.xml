@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.jbit.news.mapper.OrganizationMapper">
+
+    <select id="FindOrganizationAllList" parameterType="java.util.Map" resultType="org.jbit.news.entity.Organization">
+        SELECT * FROM organization t left join dic d on t.orgstates = d.states
+        <where>
+            <if test="orgName!=null">
+                and orgname like '%${orgName}%'
+            </if>
+        </where>
+        <if test="pageSize != null">
+            <if test="currentPageSize!=null">
+                limit #{currentPageSize},#{pageSize}
+            </if>
+        </if>
+    </select>
+    <delete id="DelOrg" parameterType="int" >
+        delete * from organization
+        <where>
+            nid=#{nid}
+        </where>
+    </delete>
+
+</mapper>

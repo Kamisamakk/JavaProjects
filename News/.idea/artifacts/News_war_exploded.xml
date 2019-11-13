@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="News:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/News</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="News" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Java EE 6-Java EE 6" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.45" />
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.4.6" />
+          <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.16.10" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.7.25" />
+          <element id="library" level="project" name="Spring-4.3.18.RELEASE" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="News/web/Web" />
+    </root>
+  </artifact>
+</component>

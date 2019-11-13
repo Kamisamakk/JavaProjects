@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         id="WebApp_ID" version="2.5">
+    <filter>
+        <!-- 注入内存 -->
+        <filter-name>loginFilter</filter-name>
+        <filter-class>org.jbit.news.filter.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>loginFilter</filter-name>
+        <url-pattern>/newspages/*</url-pattern>
+        <url-pattern>/menuServlet</url-pattern>
+        <url-pattern>/menuAddServlet</url-pattern>
+        <url-pattern>/menuUpdateServlet</url-pattern>
+<!--        <url-pattern>/productServlet</url-pattern>-->
+    </filter-mapping>
+
+    <filter>
+        <!-- 注入内存 -->
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.jbit.news.filter.EncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <url-pattern>/productServlet</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>menuServlet</servlet-name>
+        <servlet-class>org.jbit.news.servlet.MenuListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>menuServlet</servlet-name>
+        <url-pattern>/menuServlet</url-pattern>
+        <url-pattern>/api/menuServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>menuAddServlet</servlet-name>
+        <servlet-class>org.jbit.news.servlet.MenuAddServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>menuAddServlet</servlet-name>
+        <url-pattern>/api/menuAddServlet</url-pattern>
+        <url-pattern>/menuAddServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>menuUpdateServlet</servlet-name>
+        <servlet-class>org.jbit.news.servlet.MenuUpdateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>menuUpdateServlet</servlet-name>
+        <url-pattern>/menuUpdateServlet</url-pattern>
+        <url-pattern>/api/menuUpdateServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>userListServlet</servlet-name>
+        <servlet-class>org.jbit.news.servlet.UserListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>userListServlet</servlet-name>
+        <url-pattern>/userListServlet</url-pattern>
+        <url-pattern>/api/userListServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>userAddServlet</servlet-name>
+        <servlet-class>org.jbit.news.servlet.UserAddServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>userAddServlet</servlet-name>
+        <url-pattern>/userAddServlet</url-pattern>
+        <url-pattern>/api/userAddServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>adminServlet</servlet-name>
+        <servlet-class>org.jbit.news.servlet.AdminServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>adminServlet</servlet-name>
+        <url-pattern>/adminServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>productServlet</servlet-name>
+        <servlet-class>org.jbit.news.servlet.ProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>productServlet</servlet-name>
+        <url-pattern>/productServlet</url-pattern>
+    </servlet-mapping>
+    <listener>
+        <listener-class>org.jbit.news.listener.SessionUserListenner</listener-class>
+    </listener>
+
+</web-app>

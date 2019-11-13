@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.jbit.news.mapper.FactoryMapper">
+
+    <select id="FindFactoryAllList" parameterType="java.util.Map" resultType="org.jbit.news.entity.Factory">
+        SELECT * FROM factory
+        <where>
+            <if test="factory_name!=null">
+                and factory_name like '%${factory_name}%'
+            </if>
+            <if test="factory_id!=null">
+                and factory_id = #{factory_id}
+            </if>
+        </where>
+        <if test="pageSize != null">
+            <if test="currentPageSize!=null">
+                limit #{currentPageSize},#{pageSize}
+            </if>
+        </if>
+    </select>
+    <select id="FindFactoryCount" parameterType="java.util.Map" resultType="int">
+        SELECT count(factory_id) FROM factory
+        <where>
+            <if test="factory_name!=null">
+                and factory_name like '%${factory_name}%'
+            </if>
+        </where>
+    </select>
+    <insert id="AddFactory" parameterType="org.jbit.news.entity.Factory">
+        insert into factory(factory_name,factory_web,contacts,contact_number,factory_address,
+        sort_id,summary,operator,operate_time)
+        <trim prefix="values(" prefixOverrides="," suffix=")" suffixOverrides=";">
+            ,#{factory_name},#{factory_web},#{contacts},#{contact_number},#{factory_address},#{sort_id},
+            #{summary},#{operator},now();
+        </trim>
+    </insert>
+    <delete id="DelFactory" parameterType="int" >
+        delete  from factory
+        <where>
+            and factory_id=#{factoryId}
+        </where>
+    </delete>
+    <update id="UpdateFactory" parameterType="org.jbit.news.entity.Factory">
+        update factory
+        <set>
+            <if test="factory_name!=null">
+                factory_name=#{factory_name},
+            </if>
+            <if test="factory_web!=null">
+                factory_web=#{factory_web},
+            </if>
+            <if test="contacts!=null">
+                contacts=#{contacts},
+            </if>
+            <if test="contact_number!=null">
+                contact_number=#{contact_number},
+            </if>
+            <if test="factory_address!=null">
+                factory_address=#{factory_address},
+            </if>
+            <if test="sort_id!=null">
+                sort_id=#{sort_id},
+            </if>
+            <if test="summary!=null">
+                summary=#{summary},
+            </if>
+            <if test="operator!=null">
+                operator=#{operator},
+            </if>
+            operate_time=now()
+        </set>
+        <where>
+            <if test="factory_id!=null">
+                and factory_id =#{factory_id}
+            </if>
+        </where>
+    </update>
+</mapper>
